@@ -1,49 +1,51 @@
-## 更新日志
-### 1.1.4
+#WordPress Theme Puma
 
-+ 加入友情链接页面
+[中文版本](https://github.com/bigfa/Puma/blob/master/README_CN.md)
 
-### 1.1.3
-+ 优化代码结构
+Puma is clean, unique and minimal content focus Blogging Theme perfect for bloggers. It is responsive means it will fit in various device of different size. It supports all type of post format. It is simple and it’s elegant.Theme options are directly incorporated with WordPress customizer itself.Sylva is suitable for any kind of personal or travel, hobby, tutorial blog.
 
-### 1.1.2
+Installing and customizing this theme is very easy. All required information are provided in documentation.
 
-+ 移除了AJAX列表载入
-+ 加入了favicon
-+ 加入分类等归档页面
+## Features
 
-### 1.1.1
 
-+ 加入了自定义字体
-+ bug修复
-### 1.0.5
-+ 增加了AJAX列表载入
++ Ready for latest version of WordPress.
++ Post format support :Status.
++ 100% responsive
++ Author info box below each article.
++ Custom 404 error page.
++ Translation Ready.
++ Cross-Browser Compatibility Chrome, FireFox, Safari, IE9, IE10, IE11, Edge
++ Image less design
++ Ajax comment submit
++ And more…
 
-### 1.0.4
-+ 给文章内a标签增加了样式
-+ 增加了一个归档页面
-+ 增加了一个返回顶部按钮
+## Installation
 
-### 1.0.3
-+ 修复了评论分页的bug
-+ 添加了文章分页按钮
-+ 统一了点赞按钮的样式
++ Download the zip file from the rep.
++ upload the zip file from the dashboad then active.
 
-### 1.0.2
+## Configuration
 
-+ 增加了一些社交网络图标
-+ 评论列表优化
-+ 增加了文章标签
-+ 作者信息加入了位置和作者链接
-+ 优化了静态资源加载
+Change header banner
 
-### 1.0.1
+replace banner.jpg under theme folder static/img, you can also replace favicon the same way.
 
-+ 增加了响应式支持
+set social network link
 
-+ 首页文章在设置特色图像后将自动截断
+dashboard > users > your profile,then update your social link,loaction and site url will display in the author meta box after the post content.
 
-+ 文章内页特色图像支持
+set archive tempalte / link template
+
+new page,the choose custom template.
+
+If you want to show gravatar in link template,add email in the note blank when you add or edit link.
+
+## Update logs
+
+
+### 2.0.0
++ init
 
 ## Buy me a cup of coffee or 10
 

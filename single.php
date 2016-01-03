@@ -34,10 +34,10 @@
                     <div class="author-description"><?php echo get_the_author_meta('description')?></div>
                     <div class="author-meta">
                         <?php if(get_the_author_meta('location')) : ?>
-                            <span class="author-meta-item"><svg class="icon icon-instagram" height="14" width="14" viewBox="0 0 14 14"><use xlink:href="<?php echo get_template_directory_uri() . '/static/img/svgdefs.svg';?>#icon-location"></use></svg><?php echo get_the_author_meta('location');?></span>
+                            <span class="author-meta-item"><span class="icon-location"></span></span>
                         <?php endif;?>
                         <?php if(get_the_author_meta('url')) : ?>
-                            <span class="author-meta-item"><svg class="icon icon-twitter" height="14" width="14" viewBox="0 0 14 14"><use xlink:href="<?php echo get_template_directory_uri() . '/static/img/svgdefs.svg';?>#icon-link"></use></svg><a href="<?php echo get_the_author_meta('url');?>"><?php echo get_the_author_meta('url');?></a></span>
+                            <span class="author-meta-item"><span class="icon-link"></span><a href="<?php echo get_the_author_meta('url');?>"><?php echo get_the_author_meta('url');?></a></span>
                         <?php endif;?>
                     </div>
                 </div>

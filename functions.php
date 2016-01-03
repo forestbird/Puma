@@ -1,13 +1,18 @@
 <?php
-define('PUMA_VERSION','1.1.6');
+define('PUMA_VERSION','2.0.0');
 
 function puma_setup() {
-    register_nav_menu( 'angela', '主题菜单' );
+
+    register_nav_menu( 'angela', __( 'Primary Menu', 'Puma' ) );
     add_theme_support( 'post-thumbnails' );
     add_theme_support( 'html5', array(
         'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
     ) );
     add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+    load_theme_textdomain( 'puma', get_template_directory() . '/languages' );
+    add_theme_support( 'post-formats', array(
+        'status',
+    ) );
 }
 
 add_action( 'after_setup_theme', 'puma_setup' );
@@ -17,7 +22,7 @@ function puma_load_static_files(){
     wp_enqueue_style('puma', $dir . 'css/main.css' , array(), PUMA_VERSION , 'screen');
     wp_enqueue_script( 'puma', $dir . 'js/main.js' , array( 'jquery' ), PUMA_VERSION, true );
     wp_localize_script( 'puma', 'PUMA', array(
-        'ajax_url'   => admin_url('admin-ajax.php')
+        'ajax_url'   => admin_url('admin-ajax.php'),
     ) );
 }
 
@@ -121,10 +126,10 @@ function header_social_link(){
     $socials = array('twitter','sina-weibo','instagram');
     $output = '';
     foreach ($socials as $key => $social) {
-        if( get_user_meta(1,$social,true) != '' ) { $output .= '<span class="social-link"><a href="' . get_user_meta(1,$social,true) .'" target="_blank"><svg class="icon icon-' . $social . '" height="16" width="16" viewBox="0 0 16 16"><use xlink:href="' . get_template_directory_uri() . '/static/img/svgdefs.svg#icon-' . $social . '"></use></svg></a></span>';
+        if( get_user_meta(1,$social,true) != '' ) { $output .= '<span class="social-link"><a href="' . get_user_meta(1,$social,true) .'" target="_blank"><span class="icon-' . $social . '"></span></a></span>';
         }
     }
-    $output .= '<span class="social-link"><a href="' . get_bloginfo('rss2_url'). '" target="_blank"><svg class="icon icon-feed2" height="16" width="16" viewBox="0 0 16 16"><use xlink:href="' . get_template_directory_uri() . '/static/img/svgdefs.svg#icon-feed2"></use></svg></a></span>';
+    $output .= '<span class="social-link"><a href="' . get_bloginfo('rss2_url'). '" target="_blank"><span class="icon-rss"></span></a></span>';
     return $output;
 }
 
@@ -157,4 +162,25 @@ function get_link_items(){
         $result = get_the_link_items();
     }
     return $result;
+}
+
+function disable_emojis() {
+    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+    remove_action( 'wp_print_styles', 'print_emoji_styles' );
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );    
+    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );  
+    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+}
+add_action( 'init', 'disable_emojis' );
+/**
+ * Filter function used to remove the tinymce emoji plugin.
+ * 
+ * @param    array  $plugins  
+ * @return   array             Difference betwen the two arrays
+ */
+function disable_emojis_tinymce( $plugins ) {
+    return array_diff( $plugins, array( 'wpemoji' ) );
 }

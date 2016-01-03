@@ -11,8 +11,9 @@
 <body <?php body_class();?>>
 <div class="surface-content">
     <header class="site-header u-textAlignCenter hasImage">
+    <div class="header-inner">
         <h1 class="site-title">
-            <a href="/" title=""><?php bloginfo( 'name' ); ?></a>
+            <a href="<?php echo home_url();?>" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a>
         </h1>
         <?php $description = get_bloginfo( 'description', 'display' );
         if ( $description || is_customize_preview() ) : ?>
@@ -21,8 +22,8 @@
         ?>
         <div class="social-links">
           <?php echo header_social_link();?>
-
         </div>
+    </div>
     </header>
     <nav class="topNav u-textAlignCenter">
         <div class="layoutSingleColumn">

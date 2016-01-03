@@ -110,7 +110,6 @@ jQuery(window).scroll(function() {
 			backToTop.addClass('u-hide');
 	}
 })
-console.log('QQ:4398929');
 	
 var backToTop = function() {
 		jQuery("html,body").animate({
@@ -118,3 +117,4 @@ var backToTop = function() {
 		},
 		800);
 	}
+
