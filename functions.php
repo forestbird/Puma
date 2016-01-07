@@ -1,5 +1,5 @@
 <?php
-define('PUMA_VERSION','2.0.0');
+define('PUMA_VERSION','2.0.1');
 
 function puma_setup() {
 

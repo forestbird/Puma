@@ -43,6 +43,9 @@ If you want to show gravatar in link template,add email in the note blank when y
 
 ## Update logs
 
+### 2.0.1
++ add basic wordpress css style
++ bug fixed
 
 ### 2.0.0
 + init

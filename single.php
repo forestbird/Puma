@@ -6,6 +6,7 @@
                     <h2 class="grap--h2"><?php the_title();?></h2>
                     <div class="block-postMetaWrap">
                         <time><?php echo get_the_date('Y/m/d');?></time>
+                        <?php if(function_exists('fancyratings')) fancyratings(get_the_ID(),'sb');?>
                     </div>
                 </header>
                 <div class="grap">
@@ -34,7 +35,7 @@
                     <div class="author-description"><?php echo get_the_author_meta('description')?></div>
                     <div class="author-meta">
                         <?php if(get_the_author_meta('location')) : ?>
-                            <span class="author-meta-item"><span class="icon-location"></span></span>
+                            <span class="author-meta-item"><span class="icon-location"></span><?php echo get_the_author_meta('location');?></span>
                         <?php endif;?>
                         <?php if(get_the_author_meta('url')) : ?>
                             <span class="author-meta-item"><span class="icon-link"></span><a href="<?php echo get_the_author_meta('url');?>"><?php echo get_the_author_meta('url');?></a></span>
