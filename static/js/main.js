@@ -118,3 +118,24 @@ var backToTop = function() {
 		800);
 	}
 
+jQuery(document).on("click", ".termlike", function() {
+	var _self = jQuery(this);
+	if (_self.hasClass('is-active')) {
+		alert('您已经赞过啦')
+	} else {
+		_self.addClass('is-active');
+		jQuery.ajax({
+			url: PUMA.ajax_url,
+			data: _self.data(),
+			type: 'POST',
+			dataType: "json",
+			success: function(data) {
+				if (data.status === 200) {
+					_self.find('.count').html(data.data)
+				} else {
+					alert('服务器正在努力找回自我')
+				}
+			}
+		})
+	}
+});

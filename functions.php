@@ -1,5 +1,33 @@
 <?php
-define('PUMA_VERSION','2.0.1');
+define('PUMA_VERSION','2.0.2');
+
+
+function wp_term_like( $preifx = null){
+    global $wp_query;
+    if(!is_tax() && !is_category() && !is_tag()) return ;
+    $tax = $wp_query->get_queried_object();
+    $id = $tax->term_id;
+    $num = get_term_meta($id,'_term_like',true) ? get_term_meta($id,'_term_like',true) : 0;
+    $active = isset($_COOKIE['_term_like_'.$id]) ? ' is-active' : '';
+    $output = '<button class="button termlike' . $active . '" data-action="termlike" data-action-id="' . $id . '">' . $prefix . '<span class="count">' . $num . '</span></button>';
+    return $output;
+}
+
+add_action('wp_ajax_nopriv_termlike','wp_term_like_callback');
+add_action('wp_ajax_termlike','wp_term_like_callback');
+function wp_term_like_callback(){
+    $id = $_POST['actionId'];
+    $num = get_term_meta($id,'_term_like',true) ? get_term_meta($id,'_term_like',true) : 0;
+    $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false; // make cookies work with localhost
+    setcookie('_term_like_'.$id,$id,$expire,'/',$domain,false);
+    update_term_meta($id,'_term_like',$num + 1);
+    echo json_encode(array(
+        'status'=>200,
+        'data'=> $num + 1,
+        ));
+    die;
+}
+
 
 function puma_setup() {
 
