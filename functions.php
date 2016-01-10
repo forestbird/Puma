@@ -1,6 +1,13 @@
 <?php
-define('PUMA_VERSION','2.0.2');
+define('PUMA_VERSION','2.0.3');
 
+
+function recover_comment_fields($comment_fields){
+    $comment = array_shift($comment_fields);
+    $comment_fields =  array_merge($comment_fields ,array('comment' => $comment));
+    return $comment_fields;
+}
+add_filter('comment_form_fields','recover_comment_fields');
 
 function wp_term_like( $preifx = null){
     global $wp_query;
