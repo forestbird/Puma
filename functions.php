@@ -1,6 +1,9 @@
 <?php
 define('PUMA_VERSION','2.0.3');
 
+if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
+    require get_template_directory() . '/inc/back-compat.php';
+}
 
 function recover_comment_fields($comment_fields){
     $comment = array_shift($comment_fields);
