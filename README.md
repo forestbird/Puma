@@ -10,7 +10,7 @@ Installing and customizing this theme is very easy. All required information are
 
 
 + Ready for latest version of WordPress.
-+ Post format support :Status.
++ Post format support :Status,Image.
 + 100% responsive
 + Author info box below each article.
 + Custom 404 error page.
@@ -42,6 +42,12 @@ new page,the choose custom template.
 If you want to show gravatar in link template,add email in the note blank when you add or edit link.
 
 ## Update logs
+
+### 2.0.4
+
++ add image post format
++ css hack
++ fixed empty page when wordpress version lower than 4.4
 
 ### 2.0.3
 + recover comment fields

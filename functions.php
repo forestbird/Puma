@@ -1,8 +1,22 @@
 <?php
-define('PUMA_VERSION','2.0.3');
+define('PUMA_VERSION','2.0.4');
 
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
     require get_template_directory() . '/inc/back-compat.php';
+}
+
+function puma_get_images($contents)
+{
+
+    $matches = array();
+    $r = "#(<img.*?>)#";
+    if (preg_match_all($r, $contents, $matches)) {
+        foreach ($matches[0] as $num => $title) {
+            $content .= '<div class="puma-image"><div class="puma-image-overlay"></div>' . $title . '</div>';
+        }
+    }
+    // var_dump($matches);
+    return $content;
 }
 
 function recover_comment_fields($comment_fields){
@@ -34,7 +48,7 @@ function wp_term_like_callback(){
     echo json_encode(array(
         'status'=>200,
         'data'=> $num + 1,
-        ));
+    ));
     die;
 }
 
@@ -50,6 +64,7 @@ function puma_setup() {
     load_theme_textdomain( 'puma', get_template_directory() . '/languages' );
     add_theme_support( 'post-formats', array(
         'status',
+        'image',
     ) );
 }
 
@@ -58,7 +73,7 @@ add_action( 'after_setup_theme', 'puma_setup' );
 function puma_load_static_files(){
     $dir = get_template_directory_uri() . '/static/';
     wp_enqueue_style('puma', $dir . 'css/main.css' , array(), PUMA_VERSION , 'screen');
-    wp_enqueue_script( 'puma', $dir . 'js/main.js' , array( 'jquery' ), PUMA_VERSION, true );
+    wp_enqueue_script( 'puma', $dir . 'js/main.min.js' , array( 'jquery' ), PUMA_VERSION, true );
     wp_localize_script( 'puma', 'PUMA', array(
         'ajax_url'   => admin_url('admin-ajax.php'),
     ) );
@@ -191,7 +206,7 @@ function get_the_link_items($id = null){
 function get_link_items(){
     $linkcats = get_terms( 'link_category' );
     if ( !empty($linkcats) ) {
-        foreach( $linkcats as $linkcat){            
+        foreach( $linkcats as $linkcat){
             $result .=  '<h3 class="link-title">'.$linkcat->name.'</h3>';
             if( $linkcat->description ) $result .= '<div class="link-description">' . $linkcat->description . '</div>';
             $result .=  get_the_link_items($linkcat->term_id);
@@ -206,17 +221,17 @@ function disable_emojis() {
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
     remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    remove_action( 'admin_print_styles', 'print_emoji_styles' );    
+    remove_action( 'admin_print_styles', 'print_emoji_styles' );
     remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );  
+    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
     remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
     add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
 }
 add_action( 'init', 'disable_emojis' );
 /**
  * Filter function used to remove the tinymce emoji plugin.
- * 
- * @param    array  $plugins  
+ *
+ * @param    array  $plugins
  * @return   array             Difference betwen the two arrays
  */
 function disable_emojis_tinymce( $plugins ) {
