@@ -42,6 +42,10 @@ new page,the choose custom template.
 If you want to show gravatar in link template,add email in the note blank when you add or edit link.
 
 ## Update logs
+### 2.0.5
+
++ add post nav
++ fixed comment avatar rotate bug
 
 ### 2.0.4
 
