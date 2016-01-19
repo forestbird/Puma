@@ -1,2 +1,2 @@
 *.less
-main.js
+/static/js/main.js
