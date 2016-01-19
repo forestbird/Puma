@@ -22,26 +22,48 @@ Installing and customizing this theme is very easy. All required information are
 
 ## Installation
 
++ Update your WordPress to 4.4 or later.
 + Download the zip file from the rep.
 + upload the zip file from the dashboad then active.
 
 ## Configuration
 
-Change header banner
+### super wide image
+
++ set post thumbnail
++ use `<p class=”with-img”></p>` tag
++ insert image with image id
+
+### Post words break
+
++ set post thumbnail
++ use `<!--more-->`
+
+### Change header banner
 
 replace banner.jpg under theme folder static/img, you can also replace favicon the same way.
 
-set social network link
+### set social network link
 
 dashboard > users > your profile,then update your social link,loaction and site url will display in the author meta box after the post content.
 
-set archive tempalte / link template
+### set archive tempalte / link template
 
 new page,the choose custom template.
 
 If you want to show gravatar in link template,add email in the note blank when you add or edit link.
 
 ## Update logs
+
+### 2.1.0
++ add search form and search template
++ refactory functions.php
++ remove zoom.js
++ add social share button
++ add sticky post icon
++ redesign the 404 page
++ bug fixed and performance improved
+
 ### 2.0.5
 
 + add post nav

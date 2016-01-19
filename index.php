@@ -15,6 +15,6 @@
                     'mid_size' => 2
                 ) );?>
             </div>
-            </div>
+        </div>
     </main>
 <?php get_footer();?>

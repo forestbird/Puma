@@ -1,8 +1,10 @@
     <footer class="site-footer u-textAlignCenter">
-    Puma by <a href="https://fatesinger.com">bigfa</a>. <span class="icon-heart"></span> Blog since 2015.
+        <?php do_action('puma_credit');?>
     </footer>
 </div>
-	<div class="back-to-top u-hide" onclick="backToTop();"><span class="icon-circle-up"></span></div>
+<div class="back-to-top u-hide" onclick="backToTop();"><span class="icon-circle-up"></span></div>
+<?php // You can add your analystic code to the following hide tag and won't display.?>
+<div class="u-hide"></div>
 <?php wp_footer();?>
 </body>
 </html>

@@ -1,11 +1,7 @@
 <?php get_header();?>
     <main class="main-content">
         <header class="archive-header u-textAlignCenter">
-            <?php
-            the_archive_title( '<h1 class="archive-title">', '</h1>' );
-            the_archive_description( '<div class="taxonomy-description">', '</div>' );
-            echo wp_term_like();
-            ?>
+           <h1 class="archive-title"><?php printf( __( 'Search Results for: %s', 'puma' ), '<span>' . esc_html( get_search_query() ) . '</span>' ); ?></h1>
         </header>
         <section class="blockGroup">
             <?php if (have_posts()):

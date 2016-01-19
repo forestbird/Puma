@@ -28,6 +28,11 @@
                 </div>
                 <div class="postFooterAction">
                     <?php if(function_exists('wp_postlike')) wp_postlike();?>
+                    <div class="share-icons" data-title="<?php the_title();?>" data-url="<?php the_permalink();?>">
+                        <span class="icon-wechat" data-type="wechat"></span>
+                        <span class="icon-twitter" data-type="twitter"></span>
+                        <span class="icon-sina-weibo" data-type="weibo"></span>
+                    </div>
                 </div>
                 <?php the_post_navigation( array(
                     'next_text' => '<span class="meta-nav">Next</span><span class="post-title">%title</span>',
