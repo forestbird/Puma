@@ -1,4 +1,5 @@
 var BODY = jQuery('body'),
+	V = '2.1.0',
 	_form = jQuery('#commentform'),
 	_cancelButton = jQuery('#cancel-comment-reply-link'),
 	_cancelText = _cancelButton.text();
