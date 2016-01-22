@@ -1,5 +1,5 @@
 <?php
-define('PUMA_VERSION','2.1.0');
+define('PUMA_VERSION','2.1.1');
 
 /**
  * Theme setup additions.
@@ -26,3 +26,9 @@ require get_template_directory() . '/inc/callback.php';
  */
 
 require get_template_directory() . '/inc/pack.php';
+
+/**
+ * Theme update additions.
+ */
+
+require get_template_directory() . '/inc/update.php';

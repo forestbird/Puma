@@ -54,6 +54,10 @@ new page,the choose custom template.
 If you want to show gravatar in link template,add email in the note blank when you add or edit link.
 
 ## Update logs
+### 2.1.1
++ add theme auto update
++ add instagram template
++ bug fixed and performance improved
 
 ### 2.1.0
 + add search form and search template
