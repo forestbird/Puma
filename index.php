@@ -1,5 +1,5 @@
 <?php get_header();?>
-    <main class="main-content container">
+    <main class="main-content layoutSingleColumn">
         <section class="blockGroup">
             <?php if (have_posts()):
                 while (have_posts()): the_post();
@@ -7,7 +7,7 @@
                 endwhile;
             endif;?>
         </section>
-        <div class="u-textAlignCenter postsFooterNav">
+        <div class="postsFooterNav">
             <div class="posts-nav">
                 <?php echo paginate_links( array(
                     'prev_next'          => 0,

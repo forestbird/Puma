@@ -1,5 +1,7 @@
-    <footer class="site-footer u-textAlignCenter container">
+    <footer class="site-footer">
+    <div class="layoutSingleColumn">
         <?php do_action('puma_credit');?>
+      </div>
     </footer>
 </div>
 <div class="back-to-top u-hide" onclick="backToTop();"><span class="icon-circle-up"></span></div>

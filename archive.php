@@ -1,6 +1,6 @@
 <?php get_header();?>
-    <main class="main-content container">
-        <header class="archive-header u-textAlignCenter">
+    <main class="main-content layoutSingleColumn">
+        <header class="archive-header">
             <?php
             the_archive_title( '<h1 class="archive-title">', '</h1>' );
             the_archive_description( '<div class="taxonomy-description">', '</div>' );
@@ -14,7 +14,7 @@
                 endwhile;
             endif;?>
         </section>
-        <div class="u-textAlignCenter postsFooterNav">
+        <div class="postsFooterNav">
             <div class="posts-nav">
                 <?php echo paginate_links( array(
                     'prev_next'          => 0,

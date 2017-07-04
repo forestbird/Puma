@@ -4,10 +4,10 @@ Template Name: 文章归档模版
 */
 ?>
 <?php get_header();?>
-    <main class="main-conten container">
+    <main class="main-content layoutSingleColumn">
         <section class="section-body">
             <?php while ( have_posts() ) : the_post(); ?>
-                <header class="section-header u-textAlignCenter">
+                <header class="section-header">
                     <h2 class="grap--h2"><?php the_title();?></h2>
                 </header>
             <?php endwhile; ?>

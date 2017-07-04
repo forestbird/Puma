@@ -1,5 +1,5 @@
 <?php
-define('PUMA_VERSION','2.1.9');
+define('UIE_VERSION','1.0.1');
 
 /**
  * Theme setup additions.
@@ -37,10 +37,11 @@ require get_template_directory() . '/inc/customize.php';
  * Theme update additions.
  */
 
-require get_template_directory() . '/inc/update.php';
+//require get_template_directory() . '/inc/update.php';
 
 /**
  * Theme required plugins
  */
 
 require 'inc/tgm-plugin-activation/plugins.php';
+

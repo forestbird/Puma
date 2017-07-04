@@ -8,8 +8,7 @@
  */
 
 function puma_credit_print(){
-    $output = 'just a <a href="https://fatesinger.com" target="_blank">bigfa</a> theme. <span class="icon-heart"></span> Blog since ' . puma_get_site_created_year() . '.';
-    echo apply_filters( 'puma_footer' , $output );
+    echo 'just a <a href="https://fatesinger.com" title="bigfa" target="_blank">bigfa</a> theme. <span class="icon-heart"></span> Blog since ' . puma_get_site_created_year() . '.';
 }
 
 add_action('puma_credit','puma_credit_print');
@@ -168,7 +167,6 @@ function header_social_link(){
         }
     }
     $output .= '<span class="social-link"><a href="' . get_bloginfo('rss2_url'). '" target="_blank"><span class="icon-rss"></span></a></span>';
-    $output .= '<span class="social-link"><a href="javascript:;" class="opensearch"><span class="icon-search"></span></a></span>';
     return $output;
 }
 
@@ -266,13 +264,4 @@ function puma_comment_relay_mail() {
     </tbody>
     </table>
     ';
-}
-
-add_filter('the_content', 'puma_fancybox');
-function puma_fancybox ($content)
-{ global $post;
-    $pattern = "/<a(.*?)href=('|\")([^>]*).(bmp|gif|jpeg|jpg|png)('|\")(.*?)>(.*?)<\/a>/i";
-    $replacement = '<a$1href=$2$3.$4$5 class="zoomImg" $6>$7</a>';
-    $content = preg_replace($pattern, $replacement, $content);
-    return $content;
 }
