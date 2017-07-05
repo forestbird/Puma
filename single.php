@@ -6,7 +6,6 @@
                     <h2 class="grap--h2"><?php the_title();?></h2>
                     <div class="block-postMetaWrap">
                         <time><?php echo get_the_date('Y/m/d');?></time>
-                        <?php if(function_exists('fancyratings')) fancyratings(get_the_ID());?>
                     </div>
                 </header>
                 <div class="grap">

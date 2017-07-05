@@ -55,12 +55,6 @@ function converio_register_required_plugins() {
 			'required' 	=> true,
 		),
 
-		// This is an example of how to include a plugin from the WordPress Plugin Repository
-		array(
-			'name' 		=> 'WP fancyratings',
-			'slug' 		=> 'wp-fancyratings',
-			'required' 	=> false,
-		),
 	);
 
 	/*
