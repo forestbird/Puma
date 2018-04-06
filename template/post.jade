@@ -1,0 +1,28 @@
+html
+    head
+        +h.headers
+        +h.load('/template/style.scss')
+        title= post.title + " - " + site.title
+    body
+        .surface-content
+            header(class='site-header u-textAlignCenter')
+                .header-inner
+                    h1.site-title: a(href='/')= site.title
+                    p.site-description= site.configs.sub_title
+            nav(class='topNav u-textAlignCenter')
+                +site.just_nav
+
+            main.main-content
+                section.section-body
+                    header(class='section-header u-textAlignCenter')
+                        h2.grap--h2= post.title
+                        .block-postMetaWrap
+                            time= post.date.format('%m %d, %Y')
+                    .grap= post.content
+
+                if post.metadata.comment not in ['no', 'No', False]
+                    div.comments-area
+                        +post.comments_as_html()
+
+            footer(class='site-footer u-textAlignCenter')
+                 a <a href="https://fatesinger.com" target="_blank">bigfa</a> theme. 
