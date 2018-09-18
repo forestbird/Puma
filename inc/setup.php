@@ -164,6 +164,8 @@ add_filter('comment_form_fields','recover_comment_fields');
  * @since Puma 2.0.0
  */
 
+if ( !function_exists('disable_emojis') ) :
+
 function disable_emojis() {
     remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
     remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
@@ -174,8 +176,13 @@ function disable_emojis() {
     remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
     add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
 }
+endif;
 add_action( 'init', 'disable_emojis' );
+
+if ( !function_exists('disable_emojis_tinymce') ) :
 
 function disable_emojis_tinymce( $plugins ) {
     return array_diff( $plugins, array( 'wpemoji' ) );
 }
+
+endif;
