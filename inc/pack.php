@@ -8,7 +8,7 @@
  */
 
 function puma_credit_print(){
-    $output = 'just a <a href="https://fatesinger.com" target="_blank">bigfa</a> theme. <span class="icon-heart"></span> Blog since ' . puma_get_site_created_year() . '.';
+    $output = 'Just a <a href="https://fatesinger.com" target="_blank">bigfa</a> theme<span class="sep"></span>Blog since ' . puma_get_site_created_year();
     echo apply_filters( 'puma_footer' , $output );
 }
 
@@ -206,6 +206,7 @@ function get_the_link_items($id = null){
 
 function get_link_items(){
     $linkcats = get_terms( 'link_category' );
+    $result = '';
     if ( !empty($linkcats) ) {
         foreach( $linkcats as $linkcat){
             $result .=  '<h3 class="link-title">'.$linkcat->name.'</h3>';

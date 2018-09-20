@@ -5,6 +5,6 @@
         </div>
     </a>
     <div class="status-footer">
-        <span><?php if(function_exists('wpl_get_like_count')) echo wpl_get_like_count(get_the_ID());?> likes . <?php echo get_comments_number();?> replies.</span>
+        <span><?php if(function_exists('wpl_get_like_count')) echo wpl_get_like_count(get_the_ID()) ? wpl_get_like_count(get_the_ID()) : 0;?> likes . <?php echo get_comments_number();?> replies.</span>
     </div>
 </article>

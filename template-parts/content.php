@@ -1,11 +1,13 @@
-<article class="block block--inset block--list<?php if(is_sticky()) echo ' sticky';?>">
+<article class="block--list<?php if(is_sticky()) echo ' sticky';?>">
+    <header class="u-textAlignCenter">
     <h2 class="block-title post-featured" itemprop="headline">
         <a href="<?php the_permalink();?>"><?php the_title();?></a>
     </h2>
-    <div class="block-postMetaWrap u-textAlignCenter">
+    <div class="block-postMetaWrap">
         <time><?php echo get_the_date('Y/m/d');?></time>
     </div>
-    <div class="block-snippet block-snippet--subtitle grap" itemprop="about">
+</header>
+    <div class="block-snippet grap" itemprop="about">
         <?php if(has_post_thumbnail()):?>
             <p class="with-img"><?php the_post_thumbnail( 'full' ); ?></p>
             <?php if( post_password_required()) : ?>

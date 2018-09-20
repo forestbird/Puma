@@ -8,7 +8,7 @@ Template Name: 友情链接模版
         <section class="section-body">
             <?php while ( have_posts() ) : the_post(); ?>
                 <header class="section-header u-textAlignCenter">
-                    <h2 class="grap--h2"><?php the_title();?></h2>
+                    <h2 class="block-title"><?php the_title();?></h2>
                 </header>
             <?php endwhile; ?>
             <div class="page-wrapper">

@@ -14,7 +14,7 @@ if ( post_password_required() )
         ) );
         ?>
     </ol>
-    <nav class="navigation comment-navigation u-textAlignCenter" data-fuck="<?php the_ID();?>">
+    <nav class="comment-navigation" data-fuck="<?php the_ID();?>">
     <?php paginate_comments_links(array('prev_next'=>false)); ?>
     </nav>
     <?php if(comments_open()) : ?>

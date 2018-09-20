@@ -4,11 +4,11 @@ Template Name: 文章归档模版
 */
 ?>
 <?php get_header();?>
-    <main class="main-conten container">
+    <main class="main-content">
         <section class="section-body">
             <?php while ( have_posts() ) : the_post(); ?>
                 <header class="section-header u-textAlignCenter">
-                    <h2 class="grap--h2"><?php the_title();?></h2>
+                    <h2 class="block-title"><?php the_title();?></h2>
                 </header>
             <?php endwhile; ?>
             <div class="fancy-archive">
@@ -25,6 +25,7 @@ Template Name: 文章归档模版
                     $posts_rebuild[$post_year][$post_mon][] = '<li><a href="'. get_permalink() .'">'. get_the_title() .'</a> <em>('. get_comments_number('0', '1', '%') .')</em></li>';
                 endwhile;
                 wp_reset_postdata();
+                $output = '';
                 foreach ($posts_rebuild as $key => $value) {
                     $output .= '<h3 class="archive-year">' . $key . '</h3>';
                     $year = $key;

@@ -49,9 +49,8 @@ add_action( 'wp_head', 'puma_javascript_detection', 0 );
  */
 
 function puma_load_static_files(){
-    $dir = get_template_directory_uri() . '/static/';
-    wp_enqueue_style('puma', $dir . 'css/bundle.css' , array(), PUMA_VERSION , 'screen');
-    wp_enqueue_script( 'puma', $dir . 'js/bundle.js' , array( 'jquery' ), PUMA_VERSION, true );
+    wp_enqueue_style('puma', get_template_directory_uri() . '/build/css/app.css' , array(), PUMA_VERSION , 'screen');
+    wp_enqueue_script( 'puma', get_template_directory_uri() . '/build/js/app.js' , array( 'jquery' ), PUMA_VERSION, true );
     wp_localize_script( 'puma', 'PUMA', array(
         'ajax_url'   => admin_url('admin-ajax.php'),
     ) );
