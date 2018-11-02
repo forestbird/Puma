@@ -1,29 +1,29 @@
-<?php 
+<?php
 
 if ( ! function_exists( 'puma_setup' ) ) :
-/**
- * Sets up theme defaults and registers support for various WordPress features.
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- *
- * @since Puma 2.0.0
- */
+    /**
+     * Sets up theme defaults and registers support for various WordPress features.
+     *
+     * Note that this function is hooked into the after_setup_theme hook, which
+     * runs before the init hook. The init hook is too late for some features, such
+     * as indicating support for post thumbnails.
+     *
+     * @since Puma 2.0.0
+     */
 
-function puma_setup() {
-    register_nav_menu( 'puma', __( 'Primary Menu', 'puma' ) );
-    add_theme_support( 'post-thumbnails' );
-    add_theme_support( 'html5', array(
-        'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
-    ) );
-    add_theme_support( 'title-tag' );
-    add_filter( 'pre_option_link_manager_enabled', '__return_true' );
-    load_theme_textdomain( 'puma', get_template_directory() . '/languages' );
-    add_theme_support( 'post-formats', array(
-        'status',
-    ) );
-}
+    function puma_setup() {
+        register_nav_menu( 'puma', __( 'Primary Menu', 'puma' ) );
+        add_theme_support( 'post-thumbnails' );
+        add_theme_support( 'html5', array(
+            'search-form', 'comment-form', 'comment-list', 'gallery', 'caption'
+        ) );
+        add_theme_support( 'title-tag' );
+        add_filter( 'pre_option_link_manager_enabled', '__return_true' );
+        load_theme_textdomain( 'puma', get_template_directory() . '/languages' );
+        add_theme_support( 'post-formats', array(
+            'status',
+        ) );
+    }
 
 endif;
 
@@ -59,21 +59,21 @@ function puma_load_static_files(){
 add_action( 'wp_enqueue_scripts', 'puma_load_static_files' );
 
 function puma_post_nav_background() {
-  if ( ! is_single() ) {
-    return;
-  }
+    if ( ! is_single() ) {
+        return;
+    }
 
-  $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
-  $next     = get_adjacent_post( false, '', false );
-  $css      = '';
+    $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
+    $next     = get_adjacent_post( false, '', false );
+    $css      = '';
 
-  if ( is_attachment() && 'attachment' == $previous->post_type ) {
-    return;
-  }
+    if ( is_attachment() && 'attachment' == $previous->post_type ) {
+        return;
+    }
 
-  if ( $previous &&  has_post_thumbnail( $previous->ID ) ) {
-    $prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-thumbnail' );
-    $css .= '
+    if ( $previous &&  has_post_thumbnail( $previous->ID ) ) {
+        $prevthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $previous->ID ), 'post-thumbnail' );
+        $css .= '
       .post-navigation .nav-previous { background-image: url(' . esc_url( $prevthumb[0] ) . ');}
       .post-navigation .nav-previous .post-title { color: #fff; }
       .post-navigation .nav-previous .meta-nav { color: rgba(255,255,255,.9)}
@@ -87,11 +87,11 @@ function puma_post_nav_background() {
       background-color: rgba(0,0,0,0.4);
     }
     ';
-  }
+    }
 
-  if ( $next && has_post_thumbnail( $next->ID ) ) {
-    $nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-thumbnail' );
-    $css .= '
+    if ( $next && has_post_thumbnail( $next->ID ) ) {
+        $nextthumb = wp_get_attachment_image_src( get_post_thumbnail_id( $next->ID ), 'post-thumbnail' );
+        $css .= '
       .post-navigation .nav-next { background-image: url(' . esc_url( $nextthumb[0] ) . ');}
       .post-navigation .nav-next .post-title { color: #fff; }
       .post-navigation .nav-next .meta-nav { color: rgba(255,255,255,.9)}
@@ -105,11 +105,11 @@ function puma_post_nav_background() {
       background-color: rgba(0,0,0,0.4);
     }
     ';
-  }
+    }
 
-  //echo $css;
+    //echo $css;
 
-  wp_add_inline_style( 'puma', $css );
+    wp_add_inline_style( 'puma', $css );
 }
 add_action( 'wp_enqueue_scripts', 'puma_post_nav_background' );
 
@@ -165,23 +165,60 @@ add_filter('comment_form_fields','recover_comment_fields');
 
 if ( !function_exists('disable_emojis') ) :
 
-function disable_emojis() {
-    remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
-    remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
-    remove_action( 'wp_print_styles', 'print_emoji_styles' );
-    remove_action( 'admin_print_styles', 'print_emoji_styles' );    
-    remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
-    remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );  
-    remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
-    add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
-}
+    function disable_emojis() {
+        remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+        remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+        remove_action( 'wp_print_styles', 'print_emoji_styles' );
+        remove_action( 'admin_print_styles', 'print_emoji_styles' );
+        remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+        remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+        remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+        add_filter( 'tiny_mce_plugins', 'disable_emojis_tinymce' );
+    }
 endif;
 add_action( 'init', 'disable_emojis' );
 
 if ( !function_exists('disable_emojis_tinymce') ) :
 
-function disable_emojis_tinymce( $plugins ) {
-    return array_diff( $plugins, array( 'wpemoji' ) );
-}
+    function disable_emojis_tinymce( $plugins ) {
+        return array_diff( $plugins, array( 'wpemoji' ) );
+    }
 
 endif;
+
+/**
+ * Hack default search form.
+ *
+ * @since Puma 3.0.1
+ */
+
+
+function puma_get_search_form(){
+    $form = '<form method="get" class="search-form" action="' . esc_url( home_url( '/' ) ) . '">
+                    <input type="search" class="search-field" placeholder="输入内容按回车搜索" value="' . get_search_query() . '" name="s" />
+            </form>';
+    return $form;
+}
+add_filter('get_search_form','puma_get_search_form');
+
+/**
+ * Puma theme active analystic.
+ *
+ * @since Puma 3.0.1
+ */
+
+function puma_send_analystic(){
+    $current_version = get_option('_puma_version');
+    $api_url = "https://dev.fatesinger.com/_/api/";
+    $theme_data = jaguar_get_theme();
+    if ( $current_version == $theme_data['theme_version'] || $theme_data['site_url'] == 'localhost' ) return;
+    $send_body = array_merge(array('action' => 'puma_send_analystic'), $theme_data);
+    $send_for_check = array(
+        'body' => $send_body,
+        'sslverify' => false,
+        'timeout' => 300,
+    );
+    $response = wp_remote_post($api_url, $send_for_check);
+    if ( !is_wp_error($response ) ) update_option( '_puma_version' , $theme_data['theme_version'] );
+}
+add_action('after_switch_theme','puma_send_analystic');

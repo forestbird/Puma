@@ -18,6 +18,7 @@
         if ( $description ) : ?>
             <p class="site-description"><?php echo $description; ?></p>
         <?php endif;?>
+        <?php echo get_search_form();?>
     </div>
     </header>
     <nav class="topNav">
