@@ -70,7 +70,9 @@ function puma_post_nav_background() {
 
     $previous = ( is_attachment() ) ? get_post( get_post()->post_parent ) : get_adjacent_post( false, '', true );
     $next     = get_adjacent_post( false, '', false );
-    $css      = '';
+    $css      = '.children {
+      margin-left:50px;
+    }';
 
     if ( is_attachment() && 'attachment' == $previous->post_type ) {
         return;
