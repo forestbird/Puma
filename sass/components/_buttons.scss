@@ -1,0 +1,43 @@
+.button {
+	display: inline-block;
+	line-height: 28px;
+	cursor: pointer;
+	&--primary {
+		border:1px solid $colorPrimary;
+		border-radius: 999rem;
+		font-size: 14px;
+		color: $colorPrimary;
+		padding: 4px 16px;
+		background-color: #fff;
+		&:hover {
+			background-color: $colorPrimary;
+			color: #fff;
+		}
+	}
+
+	&--small {
+		//height: 28px;
+		line-height: 27px;
+		border:1px solid rgba(0,0,0,0.1);
+		border-radius: 999rem;
+		font-size: 12px;
+		padding: 4px 12px;
+		box-sizing: border-box;
+	}
+
+	&--chromeless {
+    border: 0;
+    padding: 0;
+    .svgIcon {
+    fill: #6b5400;
+}
+}
+
+	& > &-defaultState  , &.is-active > &-activeState{
+		display: inline;
+	}
+
+	&.is-active > &-defaultState  , & > &-activeState{
+		display: none;
+	}
+}

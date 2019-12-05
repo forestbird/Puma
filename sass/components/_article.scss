@@ -1,0 +1,269 @@
+
+.headerMeta {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  .avatar {
+    border-radius: 999rem;
+    margin-right: 12px;
+    border: 1px solid $colorPrimary;
+  }
+
+  &--content {
+    font-size: 14px;
+    line-height: 1.4;
+    color: rgba(0,0,0,0.5);
+  }
+}
+
+
+
+.postArticle{
+  &--header {
+    padding-top: 150px;
+    padding-bottom: 20px;
+    position: relative;
+}
+&--title {
+    font-size: 2rem;
+    line-height: 1.4;
+    font-weight: 600;
+}
+&--subTitle {
+    font-size: 1.5rem;
+    color: #9ea0a6;
+    line-height: 1.2;
+}
+&--meta {
+    position: absolute;
+    top: 36px;
+    right: 0;
+    height: 85px;
+    line-height: 36px;
+    width: 85px;
+    user-select: none;
+    time {
+    color: #333;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 36px;
+}
+    .month {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+.day {
+    bottom: -4px;
+    position: absolute;
+    right: 0;
+}
+    &:after {
+    background-color: #0f2540;
+    content: "";
+    display: block;
+    height: 118px;
+    position: absolute;
+    right: 42px;
+    top: -16px;
+    transform: rotate(45deg);
+    width: 1px;
+}
+}
+}
+
+
+.elevate-container{
+  @include u-centered;
+  max-width: 1150px;
+}
+
+.elevateRecirc-title {
+    font-size: 24px;
+    padding-left: 50px;
+}
+
+.elevateSidebar{
+  left: 0;
+    margin-top: 30px;
+    position: absolute;
+    top: 210px;
+    width: 140px;
+    z-index: 100;
+}
+
+.elevate{
+  &-items {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-recirc{
+    width: 33.3333%;
+    padding:10px;
+    box-sizing: border-box;
+    h4 {
+          font-size: 18px;
+    line-height: 1.3;
+    margin-bottom: 4px;
+    margin-top: 10px;
+    font-weight: 400;
+    }
+    .meta  {
+      font-size: 14px;
+    }
+    &-img {
+      &:hover {
+        transform:scale(0.95);
+        img {
+          transform:scale(1.05);
+        }
+      }
+    transition: .5s;
+    display: block;
+    overflow: hidden;
+    img {
+      transition: .5s;
+    display: block;
+    }
+}
+  }
+}
+
+
+.article{
+  padding-top: 50px;
+  @include layoutSingleColumn;
+  &--headline {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.3;
+  }
+  &--header {
+    margin-bottom: 20px;
+  }
+  &--meta {
+    color: rgba(0,0,0,.6);
+    font-size: .875rem;
+  }
+
+  &--subline {
+
+  }
+
+  &--actions {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  &--authorCard {
+    display: flex;
+    padding-top: 30px;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    align-items: center;
+    margin-bottom: 30px;
+    .avatar {
+      border-radius: 100%;
+      width: 80px;
+      height: 80px;
+      margin-right: 15px;
+    }
+    &__content {
+      h3 {
+        font-size: 24px;
+        line-height: 1;
+      }
+      p {
+        font-size: 18px;
+        color: rgba(0,0,0,.6);
+        .svgIcon {
+          height: 18px;
+          width: 18px;
+          display: inline-block;
+          vertical-align: -3px;
+          fill: #b2ada6;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+
+  .article {
+    padding-top: 10px;
+  }
+
+
+}
+
+.elevate-prefix{
+	font-size: 14px;
+	color: rgba(0,0,0,0.5);
+}
+
+.elevateCoverShadow {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.08);
+}
+
+.elevate-image {
+    transition: height .5s;
+    height: 186px;
+    display: block;
+}
+
+.elevatePost-item {
+    border-bottom: 1px solid #eee;
+    padding: 8px 0;
+    h4 {
+    font-size: 12px;
+    font-weight: 700;
+}
+.meta {
+    font-size: 12px;
+    color: rgba(0,0,0,.44);
+}
+}
+
+.u-relative{
+  position: relative;
+}
+
+.sectionLayout--insetColumn {
+    max-width: 798px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.elevateFixed {
+    position: fixed;
+    top: 30px;
+    width: 140px;
+}
+
+.elevateAuthorCard{
+  h3 {
+    font-size: 24px;
+    margin-top: 15px;
+    line-height: 1;
+}
+.elevateAuthorCard p {
+    font-size: 18px;
+    color: rgba(0,0,0,.6);
+}
+  padding-top: 30px;
+    margin-top: 15px;
+    border-top: 1px solid #eee;
+    display: flex;
+    .avatar {
+    border-radius: 100%;
+    width: 80px;
+    height: 80px;
+}
+}
+
+.u-marginLeft25 {
+    margin-left: 25px;
+}

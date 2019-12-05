@@ -1,0 +1,79 @@
+.overlay {
+    position: fixed;
+    top:0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(255,255,255,.96);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index:100;
+}
+
+.zoomImgClose {
+    background-color: transparent;
+    border: 0;
+    color: #ccc;
+    font-size: 40px;
+    line-height: 1;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    svg {
+        transition: .5s transform;
+    }
+
+    &:hover {
+        svg {
+            transform: rotate(90deg);
+        }
+    }
+}
+
+.overlay-img-wrap {
+    position: relative;
+    opacity: 0;
+    transition: opacity .5s;
+    &.is-finieshed {
+        opacity: 1;
+    }
+}
+
+.zoomNav {
+    display: flex;
+    justify-content: center;
+}
+
+.zoomNav-item {
+    height: 12px;
+    width: 12px;
+    border-radius: 100%;
+    cursor: pointer;
+    margin: 4px;
+    background-color: #ccc;
+    &.is-active {
+    background-color: #6b5400;
+}
+}
+
+.zoomImgNext, .zoomImgPre {
+    position: absolute;
+    background-color: transparent;
+    border: 0;
+    top: 50%;
+    transform: translate3d(0,-50%,0);
+    cursor: pointer;
+   .svgIcon {
+    fill: rgba(0,0,0,.3);
+}
+}
+
+.zoomImgPre {
+    left: -60px;
+}
+
+.zoomImgNext {
+    right: -60px;
+}

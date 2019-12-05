@@ -1,42 +1,75 @@
-var gulp = require("gulp");
-var babel = require("gulp-babel");
-var uglify = require("gulp-uglifyjs");
-var concat = require('gulp-concat');
-var rename = require('gulp-rename');
-var rev = require('gulp-rev');
-var nano = require('gulp-cssnano');
-var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
-var less = require('gulp-less');
+"use strict";
 
-gulp.task('less',function() {
-    return gulp.src(['css/app.less'])
-        .pipe(less().on('error', function (e){
-            console.error(e.message);
-            this.emit('end');
-        }))
-        .pipe(postcss([autoprefixer]))
-        .pipe(nano())
-        .pipe(gulp.dest('build/css'))
-});
+const gulp = require('gulp');
+const babel = require('gulp-babel');
+const uglify = require('gulp-uglify');
+const concat = require('gulp-concat');
+const plumber = require("gulp-plumber");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+const cssnano = require("cssnano");
+const browserify = require('browserify');
+const webpack = require("webpack");
+const webpackconfig = require("./webpack.config.js");
+const webpackstream = require("webpack-stream");
+const sass = require("gulp-sass");
+const rename = require("gulp-rename");
 
-gulp.task("uglify", function() {
-    return gulp.src(['js/base.js'])
-        .pipe(concat('all.js'))
-        .pipe(babel({
-            presets: ['env']
-        }))
-        .pipe(uglify('all.js',{
-            mangle: true,
-            }))
-        .pipe(rename('app.js'))
-        //.pipe(rev())
-        .pipe(gulp.dest("build/js"));
-});
+// Lint scripts
+function scriptsLint() {
+  return gulp
+    .src(["./assets/js/**/*", "./gulpfile.js"])
+    .pipe(plumber())
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+}
 
-gulp.task('watch',function() {
-    gulp.watch(['css/app.less','css/less-module/*.less'],['less']);
-    gulp.watch(['js/cow.js','js/base.js'], ['uglify']);
-});
 
-gulp.task('default', ['less','uglify','watch']);
+function css() {
+  return gulp
+    .src("./sass/app.scss")
+    .pipe(plumber())
+    .pipe(sass({ 
+      outputStyle: "expanded",
+      includePaths: require('node-normalize-scss').includePaths 
+    }))
+    .pipe(gulp.dest("./vendor/css/"))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(postcss([autoprefixer(), cssnano()]))
+    .pipe(gulp.dest("./vendor/css/"))
+}
+
+
+// Transpile, concatenate and minify scripts
+function scripts() {
+  return (
+    gulp
+      .src(["./typescript/app.ts"])
+      .pipe(plumber())
+      //.pipe(webpackstream(webpackconfig, webpack))
+      .pipe(concat('all.bundle.ts'))
+      .pipe(babel({
+      presets: ['@babel/preset-env',"@babel/typescript"]
+    }))
+      .pipe(uglify())
+    .pipe(gulp.dest('./vendor/js/'))
+  );
+}
+
+// Watch files
+function watchFiles() {
+   //gulp.watch(["./typescript/*.ts"], gulp.series(scripts));
+    gulp.watch(["./sass/*","./sass/components/*","./sass/base/*"], gulp.series(css));
+}
+
+// define complex tasks
+const js = gulp.series(scripts);
+const watch = gulp.parallel(watchFiles);
+const build = gulp.parallel(watch,gulp.parallel(css));
+
+exports.css = css;
+//exports.js = js;
+exports.build = build;
+exports.watch = watch;
+exports.default = build;

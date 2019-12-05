@@ -1,4 +1,4 @@
-    <footer class="site-footer">
+    <footer class="footer">
         <?php do_action('puma_credit');?>
     </footer>
 </div>

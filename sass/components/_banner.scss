@@ -1,0 +1,60 @@
+.topHeader {
+	    padding: 140px 40px;
+    position: relative;
+    background-size: cover;
+    color: rgba(255,255,255,.97);
+    background-position: center;
+    text-align: center;
+    background-image:url(../img/banner.jpg);
+    &:before {
+    	    background-color: rgba(0,0,0,.1);
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    }
+    &--content {
+    	position: relative;
+    }
+
+    &--title {
+    	font-size: 32px;
+    }
+
+    &--subTitle {
+    	font-size: 16px;
+    }
+}
+
+.topNav {
+	text-align: center;
+	&--list {
+		border-bottom: 1px solid rgba(0,0,0,0.05);
+		font-size: 14px;
+    line-height: 50px;
+    display: flex;
+    justify-content: center;
+	}
+}
+
+.menu-item {
+    color: rgba(0,0,0,.6);
+    font-size: 12px;
+    letter-spacing: 1px;
+    margin-right: 8px;
+    margin-left: 8px;
+    //position: relative;
+    text-transform: uppercase;
+    a {
+    	display: block;
+    	&:hover {
+    		color: $colorPrimary;
+    	}
+    }
+}
+
+.sub-menu {
+	display: none;
+}

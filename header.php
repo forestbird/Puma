@@ -9,16 +9,16 @@
 </head>
 <body <?php body_class();?>>
 <div class="surface-content">
-    <header class="site-header">
-    <div class="header-inner">
-        <h1 class="site-title">
+    <header class="topHeader">
+    <div class="topHeader--content">
+        <h1 class="topHeader--title">
             <a href="<?php echo home_url();?>" title="<?php bloginfo( 'name' ); ?>"><?php if ( !get_option('header_logo_image') ) { bloginfo( 'name' ); } else { echo '<img src="' . get_option('header_logo_image') .'">';} ?></a>
         </h1>
         <?php $description = get_bloginfo( 'description', 'display' );
         if ( $description ) : ?>
-            <p class="site-description"><?php echo $description; ?></p>
+            <p class="topHeader--subTitle"><?php echo $description; ?></p>
         <?php endif;?>
-        <?php echo get_search_form();?>
+        <?php //echo get_search_form();?>
     </div>
     </header>
     <nav class="topNav">

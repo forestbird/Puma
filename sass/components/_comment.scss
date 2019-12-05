@@ -1,0 +1,29 @@
+.form-submit{
+  .submit {
+    border:1px solid $primaryColor;
+    color: $primaryColor;
+    background: #fff;
+    padding: 8px 14px;
+    border-radius: 4px;
+  }
+}
+
+.comment-form{
+  label {
+    display: block;
+    font-size: 14px;
+    color: rgba(0,0,0,0.5);
+  }
+  textarea {
+    &:focus {
+      border-color: $primaryColor;
+    }
+    border: 1px solid rgba(0,0,0,0.08);
+    transition: .5s;
+    padding: 15px;
+  }
+}
+
+.reply .comment-reply-link{
+  border-radius: 999rem;
+}

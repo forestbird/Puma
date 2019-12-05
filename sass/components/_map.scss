@@ -1,0 +1,32 @@
+.mapHeader {
+    display: flex;
+    align-items: center;
+    padding: 30px 0;
+    @include layoutSingleColumn--wide;
+}
+
+.footer-map {
+    @include layoutSingleColumn--wide;
+}
+
+.footer-map-note {
+    font-size: 14px;
+    color: rgba(0,0,0,0.56);
+    margin-bottom: 100px;
+    @include layoutSingleColumn--wide;
+}
+
+.mapHeader--image {
+    width: 64px;
+    height: 64px;
+    margin-right: 20px;
+}
+
+.mapHeader--title {
+    font-size: 28px;
+}
+
+.header-map-note{
+	margin-top: 30px;
+	@include layoutSingleColumn--wide;
+}
